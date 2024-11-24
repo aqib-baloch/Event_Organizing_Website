@@ -1,105 +1,3 @@
-// import React from "react";
-// import { useNavigate } from "react-router-dom";
-// import {
-//   AppBar,
-//   Toolbar,
-//   Typography,
-//   Button,
-//   Container,
-//   Box,
-//   Grid,
-// } from "@mui/material";
-
-// const Home = () => {
-//   const navigate = useNavigate();
-
-//   return (
-//     <div>
-//       <AppBar position="static">
-//         <Toolbar>
-//           <Typography variant="h6" style={{ flexGrow: 1 }}>
-//             Eventify
-//           </Typography>
-//           <Button color="inherit" onClick={() => navigate("/login")}>
-//             Sign In
-//           </Button>
-//           <Button color="inherit" onClick={() => navigate("/register")}>
-//             Register
-//           </Button>
-//         </Toolbar>
-//       </AppBar>
-
-//       <Container maxWidth="lg">
-//         <Box
-//           sx={{
-//             display: "flex",
-//             flexDirection: "column",
-//             alignItems: "center",
-//             justifyContent: "center",
-//             height: "80vh",
-//             textAlign: "center",
-//           }}
-//         >
-//           <Typography variant="h2" component="h1" gutterBottom>
-//             Welcome to Eventify
-//           </Typography>
-//           <Typography variant="h5" paragraph>
-//             Let's Explore Your Interest!
-//           </Typography>
-
-//           <Box mt={4}>
-//             <Grid container spacing={2}>
-//               <Grid item>
-//                 <Button
-//                   variant="contained"
-//                   color="primary"
-//                   size="large"
-//                   onClick={() => navigate("/login")}
-//                 >
-//                   Sign In
-//                 </Button>
-//               </Grid>
-//               <Grid item>
-//                 <Button
-//                   variant="outlined"
-//                   color="primary"
-//                   size="large"
-//                   onClick={() => navigate("/register")}
-//                 >
-//                   Register
-//                 </Button>
-//               </Grid>
-//             </Grid>
-//           </Box>
-//         </Box>
-//       </Container>
-
-//       {/* Footer */}
-//       <Box
-//         component="footer"
-//         sx={{
-//           py: 3,
-//           px: 2,
-//           mt: "auto",
-//           backgroundColor: (theme) =>
-//             theme.palette.mode === "light"
-//               ? theme.palette.grey[200]
-//               : theme.palette.grey[800],
-//         }}
-//       >
-//         <Container maxWidth="sm">
-//           <Typography variant="body1">
-//             © {new Date().getFullYear()} Eventify. All rights reserved.
-//           </Typography>
-//         </Container>
-//       </Box>
-//     </div>
-//   );
-// };
-
-// export default Home;
-
-
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import {
@@ -209,6 +107,7 @@ const Home = () => {
         sx={{
           py: 3,
           px: 2,
+          textAlign: "center",
           mt: "auto",
           backgroundColor: "rgba(0, 10, 36, 0.85)",
         }}

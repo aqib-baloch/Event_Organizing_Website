@@ -11,6 +11,10 @@ import CreateEvent from "./components/event/CreateEvent";
 import EditEvent from "./components/event/EditEvent";
 import DeleteRequestPage from "./components/event/DeleteRequestPage";
 import PendingDeletionRequests from "./components/event/PendingDeletionRequests";
+//import BookingForm from "./components/bookings/CreateBooking";
+import ViewAllEvents from "./components/bookings/ViewAllEvents";
+import ViewMyBookings from "./components/bookings/ViewBooking";
+import CreateBooking from "./components/bookings/CreateBooking";
 
 function App() {
   return (
@@ -72,7 +76,34 @@ function App() {
         path="/request-deletion"
         element={
           <ProtectedRoute>
-            <PendingDeletionRequests/>
+            <PendingDeletionRequests />
+          </ProtectedRoute>
+        }
+      />
+
+      <Route
+        path="/booking/view/all-events"
+        element={
+          <ProtectedRoute>
+            <ViewAllEvents />
+          </ProtectedRoute>
+        }
+      />
+
+      <Route
+        path="/booking/view/all-bookings"
+        element={
+          <ProtectedRoute>
+            <ViewMyBookings />
+          </ProtectedRoute>
+        }
+      />
+
+      <Route
+        path="/reserve-seat/:eventId"
+        element={
+          <ProtectedRoute>
+            <CreateBooking />
           </ProtectedRoute>
         }
       />

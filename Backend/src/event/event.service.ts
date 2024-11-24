@@ -63,9 +63,9 @@ export class EventService {
       throw new NotFoundException('Event not found');
     }
 
-    return event; // Ensure this is of type Event
+    return event;
   }
-  //update by id
+
   async updateEvent(
     id: string,
     updateEventDto: UpdateEventDto,
@@ -80,9 +80,9 @@ export class EventService {
       throw new NotFoundException('Event not found');
     }
 
-     if (updateEventDto.capacity !== undefined) {
-       event.capacity = updateEventDto.capacity; // apply new capacity from DTO
-     }
+    if (updateEventDto.capacity !== undefined) {
+      event.capacity = updateEventDto.capacity; // apply new capacity from DTO
+    }
 
     // Check if the logged-in organizer is the owner of the event
     if (event.organizer.id !== organizer.id) {
@@ -133,14 +133,6 @@ export class EventService {
 
     return this.deletionRequestRepository.save(deletionRequest);
   }
-
-  // Fetch pending deletion requests for Admin review
-  // async getPendingDeletionRequests(): Promise<EventDeletionRequest[]> {
-  //   return await this.deletionRequestRepository.find({
-  //     where: { status: DeletionRequestStatus.PENDING },
-  //     relations: ['event', 'organizer'],
-  //   });
-  // }
 
   async getPendingDeletionRequests(
     organizerId: number,

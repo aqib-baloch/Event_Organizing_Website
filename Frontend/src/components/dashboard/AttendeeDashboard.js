@@ -11,14 +11,17 @@ import {
   Grid,
 } from "@mui/material";
 
-// AppBar Component
+// AppBar Component for Header
 const Header = ({ onLogout }) => (
-  <AppBar position="static" color="primary">
+  <AppBar position="static" sx={{ backgroundColor: "#333f58" }}>
     <Toolbar>
-      <Typography variant="h6" sx={{ flexGrow: 1 }}>
-        Event Attendee Dashboard
+      <Typography
+        variant="h6"
+        sx={{ flexGrow: 1, textAlign: "center", color: "#ffffff" }}
+      >
+        Event Organizer Dashboard
       </Typography>
-      <Button color="inherit" onClick={onLogout}>
+      <Button sx={{ color: "#ffffff" }} onClick={onLogout}>
         Logout
       </Button>
     </Toolbar>
@@ -27,31 +30,32 @@ const Header = ({ onLogout }) => (
 
 // Footer Component
 const Footer = () => (
-  <Box sx={{ py: 3, px: 2, mt: "auto", backgroundColor: "#f5f5f5" }}>
+  <Box
+    sx={{
+      py: 3,
+      px: 2,
+      textAlign: "center",
+      mt: "auto",
+      backgroundColor: "#333f58",
+    }}
+  >
     <Container maxWidth="sm">
-      <Typography variant="body1">Event Organizer &copy; 2024</Typography>
+      <Typography variant="body1" color="#ffffff">
+        Eventify &copy; 2024
+      </Typography>
     </Container>
   </Box>
 );
 
-const OrganizerDashboard = () => {
+const AttendeeDashboard = () => {
   const navigate = useNavigate();
 
-  const handleCreateEvent = () => {
-    navigate("/events/create-event");
-  };
-
   const handleViewEvents = () => {
-    navigate("/events/getAllEvents");
+    navigate("/booking/view/all-events");
   };
 
-  const handleRequestDeletion = () => {
-    navigate("/request-deletion");
-  };
   const handleLogout = () => {
-    // Remove the token from local storage
     localStorage.removeItem("token");
-    // Redirect to login page
     navigate("/login");
   };
 
@@ -61,6 +65,7 @@ const OrganizerDashboard = () => {
         display: "flex",
         flexDirection: "column",
         minHeight: "100vh",
+        backgroundColor: "#001f3f", // Navy blue background
       }}
     >
       {/* Header */}
@@ -68,24 +73,29 @@ const OrganizerDashboard = () => {
 
       {/* Main Content */}
       <Container component="main" sx={{ mt: 8, mb: 2 }}>
-        <Paper elevation={3} sx={{ p: 4 }}>
+        <Paper
+          elevation={4}
+          sx={{ p: 4, color: "white", backgroundColor: "#333f58" }}
+        >
           <Typography variant="h4" component="h1" gutterBottom>
-            Welcome to the Attendee Dashboard
+            Welcome, Event Attendee!
           </Typography>
-          <Typography variant="h6" component="h2" gutterBottom>
-            View the Upcoming Events and  Book the Tickets For Your Besties!
+          <Typography variant="body1" sx={{ mb: 3 }}>
+            Use the dashboard to exlore the events and reserve the seats for
+            yourself and yours besties!
           </Typography>
 
-          {/* Buttons for Dashboard Actions */}
-          <Grid container spacing={2} sx={{ mt: 3 }}>
+          {/* Action Buttons */}
+          <Grid container spacing={2}>
             <Grid item xs={12} sm={4}>
               <Button
                 variant="contained"
                 color="primary"
                 fullWidth
-                onClick={handleCreateEvent}
+                onClick={handleViewEvents}
+                sx={{ height: "100%" }}
               >
-                Create Event
+                View the Events
               </Button>
             </Grid>
             <Grid item xs={12} sm={4}>
@@ -94,8 +104,9 @@ const OrganizerDashboard = () => {
                 color="secondary"
                 fullWidth
                 onClick={handleViewEvents}
+                sx={{ height: "100%" }}
               >
-                View My Events
+                Reserve Seats
               </Button>
             </Grid>
             <Grid item xs={12} sm={4}>
@@ -103,9 +114,10 @@ const OrganizerDashboard = () => {
                 variant="contained"
                 color="error"
                 fullWidth
-                onClick={handleRequestDeletion}
+                onClick={() => navigate("/booking/view/all-bookings")}
+                sx={{ height: "100%" }}
               >
-                View the Deletion Request
+                View Your Bookings
               </Button>
             </Grid>
           </Grid>
@@ -118,4 +130,4 @@ const OrganizerDashboard = () => {
   );
 };
 
-export default OrganizerDashboard;
+export default AttendeeDashboard;

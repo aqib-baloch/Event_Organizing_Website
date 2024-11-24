@@ -26,4 +26,30 @@ export class BookingController {
     const attendee = req.user; // Logged-in attendee
     return this.bookingService.bookEvent(eventId, createBookingDto, attendee);
   }
+
+  @Get('/view/all-events')
+  @ApiBearerAuth('JWT-auth')
+  @UseGuards(JwtAuthGuard)
+  @Roles(UserRole.ATTENDEE) // Only attendees can view events
+  async getAllEvents() {
+    return this.bookingService.getAllEvents();
+  }
+
+  @Get('/view/all-bookings')
+  @ApiBearerAuth('JWT-auth')
+  @UseGuards(JwtAuthGuard)
+  @Roles(UserRole.ATTENDEE) // Only attendees can view their bookings
+  async getMyBookings(@Request() req) {
+    const attendeeId = req.user.id; // Logged-in attendee ID
+    return this.bookingService.getMyBookings(attendeeId);
+  }
+
+  @Get('/event/:eventId')
+  @ApiBearerAuth('JWT-auth')
+  @UseGuards(JwtAuthGuard)
+  @Roles(UserRole.ATTENDEE)
+  async getEventById(@Param('eventId') eventId: string) {
+    return this.bookingService.getEventById(eventId);
+  }
 }
+

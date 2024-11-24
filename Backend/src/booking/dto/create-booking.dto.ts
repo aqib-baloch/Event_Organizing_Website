@@ -20,11 +20,10 @@ export class CreateBookingDto {
   attendeeCNIC: string;
 
   @ApiProperty({
-    description: 'St#01, House#09, City, District',
-    example: '12345-6789301-9',
+    description: 'Adress of the Attendee',
+    example: 'St#01, House#09, City, District',
   })
   @IsNotEmpty()
   @IsString()
   attendeeAddress: string;
-
-  }
+}

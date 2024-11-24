@@ -17,7 +17,6 @@ export class BookingService {
     private readonly eventRepository: Repository<Event>,
     @InjectRepository(User)
     private readonly userRepository: Repository<User>,
-
   ) {}
 
   async bookEvent(
@@ -33,11 +32,10 @@ export class BookingService {
       throw new NotFoundException('Event not found');
     }
 
-   // Check if there are available seats
+    // Check if there are available seats
     if (event.capacity <= 0) {
       throw new BadRequestException('No more seats available for this event.');
     }
-
 
     // Create a booking for the event
     const booking = this.bookingRepository.create({
@@ -49,14 +47,43 @@ export class BookingService {
       bookingDate: new Date(),
     });
 
-     const savedBooking = await this.bookingRepository.save(booking);
+    const savedBooking = await this.bookingRepository.save(booking);
 
-     // Decrement the event's capacity
-     event.capacity -= 1;
-     await this.eventRepository.save(event);
+    // Decrement the event's capacity
+    event.capacity -= 1;
+    await this.eventRepository.save(event);
 
-     return savedBooking;
+    return savedBooking;
 
-   // return await this.bookingRepository.save(booking);
+    // return await this.bookingRepository.save(booking);
+  }
+
+  async getAllEvents(): Promise<Event[]> {
+    const events = await this.eventRepository.find();
+    if (!events || events.length === 0) {
+      throw new NotFoundException('No events found');
+    }
+    return events;
+  }
+
+  async getMyBookings(attendeeId: string): Promise<Booking[]> {
+    const bookings = await this.bookingRepository.find({
+      where: { attendee: { id: Number(attendeeId) } }, // Convert to number
+      relations: ['event'], // Include event details in the response
+    });
+    if (!bookings || bookings.length === 0) {
+      throw new NotFoundException('No bookings found for this attendee');
+    }
+    return bookings;
+  }
+
+  async getEventById(eventId: string): Promise<Event> {
+    const event = await this.eventRepository.findOne({
+      where: { id: eventId },
+    });
+    if (!event) {
+      throw new NotFoundException('Event not found');
+    }
+    return event;
   }
 }

@@ -78,80 +78,88 @@ const CreateEvent = () => {
   }
 
   return (
-    <Container component="main" maxWidth="sm" sx={{ mt: 8 }}>
-      <Paper elevation={3} sx={{ p: 4 }}>
-        <Typography variant="h4" component="h1" gutterBottom>
-          Create a New Event
-        </Typography>
+    <Container >
+      <Container component="main" maxWidth="sm" sx={{ mt: 8 }}>
+        <Paper elevation={3} sx={{ p: 4 }}>
+          <Typography variant="h4" component="h1" gutterBottom>
+            Create a New Event
+          </Typography>
 
-        <form onSubmit={handleSubmit}>
-          <Grid container spacing={2}>
-            <Grid item xs={12}>
-              <TextField
-                fullWidth
-                required
-                label="Event Name"
-                name="name"
-                value={eventData.name}
-                onChange={handleChange}
-              />
+          <form onSubmit={handleSubmit}>
+            <Grid container spacing={2}>
+              <Grid item xs={12}>
+                <TextField
+                  fullWidth
+                  required
+                  label="Event Name"
+                  name="name"
+                  value={eventData.name}
+                  onChange={handleChange}
+                />
+              </Grid>
+              <Grid item xs={12}>
+                <TextField
+                  fullWidth
+                  required
+                  label="Event Description"
+                  name="description"
+                  value={eventData.description}
+                  onChange={handleChange}
+                />
+              </Grid>
+              <Grid item xs={12}>
+                <TextField
+                  fullWidth
+                  required
+                  label="Venue"
+                  name="venue"
+                  value={eventData.venue}
+                  onChange={handleChange}
+                />
+              </Grid>
+              <Grid item xs={12}>
+                <TextField
+                  fullWidth
+                  required
+                  label="Event Date and Time"
+                  type="datetime-local"
+                  InputLabelProps={{
+                    shrink: true,
+                  }}
+                  name="date"
+                  value={eventData.date}
+                  onChange={handleChange}
+                />
+              </Grid>
+              <Grid item xs={12}>
+                <TextField
+                  fullWidth
+                  required
+                  label="Capacity"
+                  type="number"
+                  name="capacity"
+                  value={eventData.capacity}
+                  onChange={handleChange}
+                />
+              </Grid>
             </Grid>
-            <Grid item xs={12}>
-              <TextField
-                fullWidth
-                required
-                label="Event Description"
-                name="description"
-                value={eventData.description}
-                onChange={handleChange}
-              />
-            </Grid>
-            <Grid item xs={12}>
-              <TextField
-                fullWidth
-                required
-                label="Venue"
-                name="venue"
-                value={eventData.venue}
-                onChange={handleChange}
-              />
-            </Grid>
-            <Grid item xs={12}>
-              <TextField
-                fullWidth
-                required
-                label="Event Date and Time"
-                type="datetime-local"
-                InputLabelProps={{
-                  shrink: true,
-                }}
-                name="date"
-                value={eventData.date}
-                onChange={handleChange}
-              />
-            </Grid>
-            <Grid item xs={12}>
-              <TextField
-                fullWidth
-                required
-                label="Capacity"
-                type="number"
-                name="capacity"
-                value={eventData.capacity}
-                onChange={handleChange}
-              />
-            </Grid>
-          </Grid>
 
-          <Box sx={{ mt: 3 }}>
-            <Button type="submit" fullWidth variant="contained" color="primary">
-              Create Event
-            </Button>
-          </Box>
-        </form>
-      </Paper>
+            <Box sx={{ mt: 3 }}>
+              <Button
+                type="submit"
+                fullWidth
+                variant="contained"
+                color="primary"
+              >
+                Create Event
+              </Button>
+            </Box>
+          </form>
+        </Paper>
+      </Container>
     </Container>
   );
 };
 
 export default CreateEvent;
+ 

@@ -138,7 +138,7 @@ import {
 const Header = ({ onLogout }) => (
   <AppBar position="static" sx={{ backgroundColor: "#333f58" }}>
     <Toolbar>
-      <Typography variant="h6" sx={{ flexGrow: 1, color: "#ffffff" }}>
+      <Typography variant="h6" sx={{ flexGrow: 1, textAlign: "center", color: "#ffffff" }}>
         Event Organizer Dashboard
       </Typography>
       <Button sx={{ color: "#ffffff" }} onClick={onLogout}>
@@ -150,10 +150,10 @@ const Header = ({ onLogout }) => (
 
 // Footer Component
 const Footer = () => (
-  <Box sx={{ py: 3, px: 2, mt: "auto", backgroundColor: "#333f58" }}>
+  <Box sx={{ py: 3, px: 2, textAlign: "center", mt: "auto", backgroundColor: "#333f58" }}>
     <Container maxWidth="sm">
       <Typography variant="body1" color="#ffffff">
-        Event Organizer &copy; 2024
+        Eventify &copy; 2024
       </Typography>
     </Container>
   </Box>
